@@ -21,7 +21,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/search.json?query=rupa+underwear&resultCount=5',
+  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/search.json?query=iphone+12&resultCount=5',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
