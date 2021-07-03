@@ -21,7 +21,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/search.json?query=iphone+12&resultCount=5',
+  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/search.json?query=msi+gaming&resultCount=5',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -31,7 +31,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'GET',
   CURLOPT_HTTPHEADER => array(
     'Fk-Affiliate-Id: closetode',
-    'Fk-Affiliate-Token: 74ab18a51ba34afc8a5c71b6a18ef31f'
+    'Fk-Affiliate-Token: 837e158b0cf64c5fa2410c5f560de70c'
   ),
 ));
 
@@ -50,11 +50,12 @@ for($x=0;$x<$num;$x++){
             $prodDesc=$dotd[$x]["productBaseInfoV1"]["productDescription"];
             $prodUrl=$dotd[$x]["productBaseInfoV1"]["productUrl"];
             $prodImage=$dotd[$x]["productBaseInfoV1"]["imageUrls"]["200x200"];
-
+            $prodPrice1=$dotd[$x]["productBaseInfoV1"]["maximumRetailPrice"]["amount"];
+            $prodPrice2=$dotd[$x]["productBaseInfoV1"]["flipkartSpecialPrice"]["amount"];
             
             
         }
-      
+      echo $prodPrice2;
          
         // foreach ($prodtitle as $key => $value) {
         //   echo $prodDesc[$key];
