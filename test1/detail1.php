@@ -1,5 +1,40 @@
-<?php ?>
-<html lang="en">
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/product.json?id=COMFUR8XCVCMMVM2',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'GET',
+  CURLOPT_HTTPHEADER => array(
+    'Fk-Affiliate-Id: closetode',
+    'Fk-Affiliate-Token: 837e158b0cf64c5fa2410c5f560de70c'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+$data = json_decode($response,true);
+$dotd=$data["productBaseInfoV1"];
+
+    $prodtitle=$dotd["title"];
+    $prodDesc=$dotd["productDescription"];
+    $prodImg1=$dotd["imageUrls"]["200x200"];  $prodImg2=$dotd["imageUrls"]["400x400"];  $prodImg3=$dotd["imageUrls"]["800x800"];
+    $prodMRP=$dotd["maximumRetailPrice"]["amount"]; $prodSP=$dotd["flipkartSpecialPrice"]["amount"];
+    $prodUrl=$dotd["productUrl"];
+    
+echo $prodMRP;
+echo$response;
+echo count($dotd);
+
+?>
+
 	<head>
 		<!-- Meta -->
 		<meta charset="utf-8">
@@ -43,42 +78,7 @@
 
 
 <!-- ============================================== HEADER : END ============================================== -->
-<?php
 
-$curl = curl_init();
-
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://affiliate-api.flipkart.net/affiliate/1.0/product.json?id=COMFUR8XCVCMMVM2',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-  CURLOPT_HTTPHEADER => array(
-    'Fk-Affiliate-Id: closetode',
-    'Fk-Affiliate-Token: 837e158b0cf64c5fa2410c5f560de70c'
-  ),
-));
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-$data = json_decode($response,true);
-$dotd=$data["productBaseInfoV1"];
-
-    $prodtitle=$dotd["title"];
-    $prodDesc=$dotd["productDescription"];
-    $prodImg1=$dotd["imageUrls"]["200x200"];  $prodImg2=$dotd["imageUrls"]["400x400"];  $prodImg3=$dotd["imageUrls"]["800x800"];
-    $prodMRP=$dotd["maximumRetailPrice"]["amount"]; $prodSP=$dotd["flipkartSpecialPrice"]["amount"];
-    $prodUrl=$dotd["productUrl"];
-    
-echo $prodMRP;
-echo$response;
-echo count($dotd);
-
-?>
 
 <div class="breadcrumb">
 	<div class="container">
@@ -485,4 +485,4 @@ echo count($dotd);
 	
 
 </body>
-</html>
+
